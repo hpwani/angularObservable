@@ -6,7 +6,7 @@
         Welcome to {{ title }}!
     </h1>
     <ul>
-        <li *ngFor="let bk of softBook">
+        <li *ngFor="let bk of softBook | async">
             ID: {{bk.id}}, Name: {{bk.name}}, Category: {{bk.category}}
         </li>
     </ul>

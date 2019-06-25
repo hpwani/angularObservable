@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/internal/Observable';
 import { BookService } from './book.service';
 import { Component } from '@angular/core';
 import { Book } from './book';
@@ -9,14 +10,18 @@ import { Book } from './book';
 })
 export class AppComponent {
   title = 'Angular Observable';
-  softBook: Book[];
+  // softBook: Book[];
+  softBook: Observable<Book[]>;
   constructor(private bookservices: BookService) {}
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnInit() {
     this.getSoftBook();
   }
 
+  // getSoftBook() {
+  //   this.bookservices.getBookFromStore().subscribe(books => this.softBook = books);
+  // }
   getSoftBook() {
-    this.bookservices.getBookFromStore().subscribe(books => this.softBook = books);
+    this.softBook = this.bookservices.getBookFromStore();
   }
 }
