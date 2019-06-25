@@ -5,11 +5,21 @@
     <h1>
         Welcome to {{ title }}!
     </h1>
-    <ul>
+    <!-- Observable with async pipe and ngFor -->
+    <!-- <ul>
         <li *ngFor="let bk of softBook | async">
             ID: {{bk.id}}, Name: {{bk.name}}, Category: {{bk.category}}
         </li>
-    </ul>
+    </ul> -->
+
+    <!-- Observable with async pipe and ngIf -->
+    <div *ngIf="softBook | async as bk; else loading">
+        ID: {{bk.id}}, Name: {{bk.name}}, Category: {{bk.category}}
+    </div>
+    <ng-template #loading>
+        <img src="assets/images/loading.gif" alt="loading image" />
+    </ng-template>
+
 </div>
 
 

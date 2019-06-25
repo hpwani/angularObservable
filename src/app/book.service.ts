@@ -13,7 +13,12 @@ export class BookService {
 
   constructor(private http: HttpClient) { }
 
-  getBookFromStore(): Observable<Book[]> {
-    return this.http.get<Book[]>(this.bookUrl);
+  // getBookFromStore(): Observable<Book[]> {
+  //   return this.http.get<Book[]>(this.bookUrl);
+  // }
+
+  /* Observable with async pipe and ngIf */
+  getBookFromStore(id: number): Observable<Book> {
+    return this.http.get<Book>(this.bookUrl + '/' + id);
   }
 }
