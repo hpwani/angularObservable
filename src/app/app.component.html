@@ -13,13 +13,21 @@
     </ul> -->
 
     <!-- Observable with async pipe and ngIf -->
-    <div *ngIf="softBook | async as bk; else loading">
+    <!-- <div *ngIf="softBook | async as bk; else loading">
         ID: {{bk.id}}, Name: {{bk.name}}, Category: {{bk.category}}
     </div>
     <ng-template #loading>
         <img src="assets/images/loading.gif" alt="loading image" />
-    </ng-template>
+    </ng-template> -->
 
+    <!-- Observable Map -->
+    <!-- <div *ngIf="softBook | async as bookname">
+        {{bookname}}
+    </div> -->
+    <!-- Observable Map with subscribe -->
+    <div *ngIf="softBook">
+        {{softBook}}
+    </div>
 </div>
 
 
