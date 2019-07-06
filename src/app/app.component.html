@@ -5,30 +5,93 @@
     <h1>
         Welcome to {{ title }}!
     </h1>
-    <!-- Observable with async pipe and ngFor -->
-    <!-- <ul>
+</div>
+<h3>Books Details</h3>
+
+<form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+    <tr>
+        <td>Name:</td>
+        <td>
+            <input type="text" formControlName="name">
+        </td>
+    </tr>
+    <tr>
+        <td>Category:</td>
+        <td>
+            <input type="text" formControlName="category">
+        </td>
+    </tr>
+    <tr>
+        <td>Writer:</td>
+        <td>
+            <input type="text" formControlName="writer">
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <button [disabled]="bookForm.invalid">Submit</button>
+        </td>
+    </tr>
+</form>
+<p *ngIf="datasaved" ngClass="Success">Record Save Successfully..!</p>
+
+<h3>View</h3>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Writer</th>
+    </tr>
+    <tr *ngFor="let bk of allbook | async">
+        <td>{{bk.id}}</td>
+        <td>{{bk.name}}</td>
+        <td>{{bk.category}}</td>
+        <td>{{bk.writer}}</td>
+        <td>
+            <button type="button" (click)="booktoEdit(bk.id)">Edit</button>
+        </td>
+        <td>
+            <button type="button" (click)="bookDelete(bk.id)">Delete</button>
+        </td>
+    </tr>
+</table>
+
+<!-- <ul>
+        <li *ngFor="let bk of softBook">
+            ID: {{bk.id}}, Name: {{bk.name}}, Category: {{bk.category}}
+        </li>
+    </ul> -->
+
+<!-- Observable with async pipe and ngFor -->
+<!-- <ul>
         <li *ngFor="let bk of softBook | async">
             ID: {{bk.id}}, Name: {{bk.name}}, Category: {{bk.category}}
         </li>
     </ul> -->
 
-    <!-- Observable with async pipe and ngIf -->
-    <!-- <div *ngIf="softBook | async as bk; else loading">
+<!-- Observable with async pipe and ngIf -->
+<!-- <div *ngIf="softBook | async as bk; else loading">
         ID: {{bk.id}}, Name: {{bk.name}}, Category: {{bk.category}}
     </div>
     <ng-template #loading>
         <img src="assets/images/loading.gif" alt="loading image" />
     </ng-template> -->
 
-    <!-- Observable Map -->
-    <!-- <div *ngIf="softBook | async as bookname">
+<!-- Observable Map -->
+<!-- <div *ngIf="softBook | async as bookname">
         {{bookname}}
     </div> -->
-    <!-- Observable Map with subscribe -->
-    <div *ngIf="softBook">
+<!-- Observable Map with subscribe -->
+<!-- <div *ngIf="softBook">
         {{softBook}}
-    </div>
-</div>
+    </div> -->
+<h3>Employee Details</h3>
+<ul>
+    <li *ngFor="let emp of empInfo">
+        ID: {{emp.id}}, Name: {{emp.name}}, Position: {{emp.position}}
+    </li>
+</ul>
 
 
 <router-outlet></router-outlet>
